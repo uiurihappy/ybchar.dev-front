@@ -1,0 +1,30 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.cypress-ct.json"
+    }
+  ],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "tests/**/*.ts", "src/**/*.d.ts", "*.d.ts"],
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es2020",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "lib": ["ESNext", "DOM"],
+    "typeRoots": ["src/types"],
+    "declaration": true,
+    "declarationDir": "src/types",
+    "types": [
+      "node",
+      "vite/client"
+    ]
+  }
+}
