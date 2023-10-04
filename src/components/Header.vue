@@ -49,14 +49,14 @@ export default {
       </div>
 
       <el-menu class="menu" mode="horizontal" router>
-        <div>
+        <!-- <div>
           <el-menu-item
             class="about-me"
             index="/about"
             active-text-color="transparent"
             >About me</el-menu-item
           >
-        </div>
+        </div> -->
         <div>
           <el-menu-item
             class="menu-item"
