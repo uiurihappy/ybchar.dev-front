@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import axios from 'axios';
+import axiosInstance from '../common/tools/axiosInstance.tool';
 export default {
   data() {
     return {
@@ -30,7 +30,7 @@ export default {
     login() {
       // 로그인 처리 로직 작성
       // this.email, this.password 값으로 API 요청 등을 통해 로그인 처리
-      axios
+      axiosInstance
         .post('/api/auth/login', {
           email: this.email,
           password: this.password,

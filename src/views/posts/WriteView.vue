@@ -35,10 +35,11 @@
 
 <script lang="ts">
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
 import { useRouter } from 'vue-router';
 import Editor from '@toast-ui/editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
+import axiosInstance from '../../common/tools/axiosInstance.tool';
+
 export default {
   props: {
     post: {
@@ -67,14 +68,14 @@ export default {
 
       try {
         if (props.post) {
-          await axios.patch(`/api/posts/${props.post.id}`, postData, {
+          await axiosInstance.patch(`/api/posts/${props.post.id}`, postData, {
             headers: {
               Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
             },
           });
           alert('게시글이 수정되었습니다.');
         } else {
-          await axios.post('/api/posts/save', postData, {
+          await axiosInstance.post('/api/posts/save', postData, {
             headers: {
               Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
             },

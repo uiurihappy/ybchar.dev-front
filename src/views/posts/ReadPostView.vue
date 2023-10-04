@@ -96,7 +96,6 @@
 <script lang="ts">
 import { onMounted, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import axios from 'axios';
 import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
 import Editor from '@toast-ui/editor';
@@ -111,6 +110,7 @@ import type Viewer from '@toast-ui/editor/dist/toastui-editor-viewer';
 import 'prismjs/themes/prism.css';
 import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
 import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
+import axiosInstance from '../../common/tools/axiosInstance.tool';
 
 dayjs.extend(timezone);
 
@@ -175,7 +175,7 @@ export default {
     };
 
     const writeComment = (post: Posts) => {
-      axios
+      axiosInstance
         .post(`/api/posts/${props.postId}/comments`, {
           username: username.value,
           password: password.value,
@@ -192,7 +192,7 @@ export default {
         });
     };
     const fetchData = async () => {
-      axios
+      axiosInstance
         .get(`/api/posts/${props.postId}`)
         .then(result => {
           post.value = result.data;

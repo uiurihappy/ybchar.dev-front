@@ -31,10 +31,10 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue';
-import axios from 'axios';
 import { useRouter } from 'vue-router';
 import Editor from '@toast-ui/editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
+import axiosInstance from '../../common/tools/axiosInstance.tool'
 
 export default defineComponent({
   props: {
@@ -55,7 +55,7 @@ export default defineComponent({
 
     const fetchData = async () => {
       try {
-        const result = await axios.get(`/api/posts/${props.postId}`);
+        const result = await axiosInstance.get(`/api/posts/${props.postId}`);
         updatePost.value = {
           id: result.data.id,
           title: result.data.title,
@@ -71,7 +71,7 @@ export default defineComponent({
     const edit = async () => {
       try {
         const editorInstance = editorRef.value;
-        await axios.patch(
+        await axiosInstance.patch(
           `/api/posts/update/${props.postId}`,
           {
             title: updatePost.value.title,

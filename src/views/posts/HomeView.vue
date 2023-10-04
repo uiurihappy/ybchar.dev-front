@@ -121,6 +121,7 @@ import { useRouter } from 'vue-router';
 import { getFormattedDate } from '../../common/tools/dateFormat.tool';
 import { truncateText } from '../../common/tools/truncateText.tool';
 import MarkdownIt from 'markdown-it';
+import axiosInstance from '../../common/tools/axiosInstance.tool'
 
 const router = useRouter();
 const PAGE_SIZE = 12;
@@ -130,7 +131,7 @@ const posts = ref<PostList>({ list: [], totalCount: 0, totalElements: 0 });
 const loadPosts = async () => {
   const md = new MarkdownIt();
   try {
-    const result = await axios.get(
+    const result = await axiosInstance.get(
       `/api/posts/list?page=${currentPage.value}&size=${PAGE_SIZE}`
     );
     posts.value = {
@@ -199,7 +200,7 @@ const viewers = ref<{ [key: number]: Viewer }>({});
 
 const loadPosts = async () => {
   try {
-    const result = await axios.get(
+    const result = await axiosInstance.get(
       `/api/posts/list?page=${currentPage.value}&size=${PAGE_SIZE}`
     );
     posts.value = {

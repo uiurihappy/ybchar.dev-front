@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script lang="ts">
-import axios from 'axios';
+import axiosInstance from '../common/tools/axiosInstance.tool';
 import jwt_decode from 'jwt-decode';
 
 export default {
@@ -28,7 +28,7 @@ export default {
       }
     },
     logout() {
-      axios.get('/api/auth/logout').then(() => {
+      axiosInstance.get('/api/auth/logout').then(() => {
         sessionStorage.removeItem('accessToken');
         this.accessToken = null;
         this.isAccessTokenValid = false;
