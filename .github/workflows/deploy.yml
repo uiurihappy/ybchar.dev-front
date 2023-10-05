@@ -46,7 +46,7 @@ jobs:
           aws s3 cp \
             --recursive \
             --region ap-northeast-2 \
-            build s3://ybchar.dev
+            dist s3://ybchar.dev
 
       - name: Invalidate CloudFront Cache
         env:
