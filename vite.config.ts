@@ -20,7 +20,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: `${process.env.VITE_API_URL}`,
+        target: `https://ybchar.shop`,
         rewrite: path => path.replace(/^\/api/, ''),
         changeOrigin: true,
         secure: false,
