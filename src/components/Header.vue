@@ -49,14 +49,20 @@ export default {
       </div>
 
       <el-menu class="menu" mode="horizontal" router>
-        <!-- <div>
-          <el-menu-item
-            class="about-me"
-            index="/about"
-            active-text-color="transparent"
-            >About me</el-menu-item
+        <div>
+          <a
+            href="https://ybchar.notion.site/Yunbeom-Cha-Backend-Developer-d81729a2f1be49b3bda27137726f23d9?pvs=4"
+            target="_blank"
           >
-        </div> -->
+            <el-menu-item
+              class="about-me"
+              index="/about"
+              active-text-color="transparent"
+            >
+              About me
+            </el-menu-item>
+          </a>
+        </div>
         <div>
           <el-menu-item
             class="menu-item"
