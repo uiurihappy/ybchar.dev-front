@@ -36,7 +36,7 @@ jobs:
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
           VITE_SECRET_KEY: ${{ secrets.VITE_SECRET_KEY }}
         run: |
-          aws s3 cp \
-            --recursive \
-            --region ap-northeast-2 \
-            dist s3://ybchar.dev/
+          aws s3 sync \
+          --region ap-northeast-2 \
+          build s3://ybchar.dev \
+          --delete
