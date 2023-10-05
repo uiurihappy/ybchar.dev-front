@@ -57,9 +57,11 @@ export default {
 
       <el-menu class="menu" mode="horizontal" router>
         <div>
-          <el-button type="text" class="about-me" @click="openAboutMe">
-            About me
-          </el-button>
+          <el-menu-item>
+            <el-button type="text" class="about-me" @click="openAboutMe">
+              About me
+            </el-button>
+          </el-menu-item>
         </div>
         <div>
           <el-menu-item
