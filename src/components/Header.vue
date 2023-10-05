@@ -14,6 +14,13 @@ export default {
     this.checkAccessTokenValidity();
   },
   methods: {
+    openAboutMe() {
+      window.open(
+        'https://ybchar.notion.site/Yunbeom-Cha-Backend-Developer-d81729a2f1be49b3bda27137726f23d9?pvs=4',
+        '_blank'
+      );
+    },
+
     checkAccessTokenValidity() {
       if (!this.accessToken) {
         this.isAccessTokenValid = false;
@@ -50,18 +57,9 @@ export default {
 
       <el-menu class="menu" mode="horizontal" router>
         <div>
-          <a
-            href="https://ybchar.notion.site/Yunbeom-Cha-Backend-Developer-d81729a2f1be49b3bda27137726f23d9?pvs=4"
-            target="_blank"
-          >
-            <el-menu-item
-              class="about-me"
-              index="/about"
-              active-text-color="transparent"
-            >
-              About me
-            </el-menu-item>
-          </a>
+          <el-button type="text" class="about-me" @click="openAboutMe">
+            About me
+          </el-button>
         </div>
         <div>
           <el-menu-item
