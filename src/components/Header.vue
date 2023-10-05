@@ -177,6 +177,7 @@ export default {
   background-color: #f5f5f5;
 }
 .about-me {
+  height: 100%;
   font-size: 16px;
   font-family: 'dohyeon';
   color: #666;
