@@ -26,24 +26,19 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Configure AWS credentials 
+        uses: aws-actions/configure-aws-credentials@v1 
+        with: 
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }} 
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
+          aws-region: ap-northeast-2
+
       - name: Deploy to s3
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          BASE_URL: ${{ secrets.BASE_URL }}
-          VITE_ENVIRONMENT: ${{ secrets.VITE_ENVIRONMENT }}
-          VITE_SERVER_PORT: ${{ secrets.VITE_SERVER_PORT }}
-          VITE_API_URL: ${{ secrets.VITE_API_URL }}
-          VITE_SECRET_KEY: ${{ secrets.VITE_SECRET_KEY }}
         run: |
-          aws s3 cp \
-            --recursive \
-            --region ap-northeast-2 \
-            dist s3://ybchar.dev
+          aws s3 cp --recursive --region ap-northeast-2 build s3://ybchar.dev
 
       - name: Invalidate CloudFront Cache
         env:
           CLOUD_FRONT_ID: ${{ secrets.CDN_DISTRIBUTION_ID }}
         run: |
-          aws cloudfront create-invalidation \
-            --distribution-id $CLOUD_FRONT_ID --paths /*
+          aws cloudfront create-invalidation --distribution-id $CLOUD_FRONT_ID --paths "/*"
