@@ -21,10 +21,10 @@ jobs:
             ${{ runner.OS }}-
             
       - name: Install Dependencies
-        run: npm install --legacy-peer-deps
+        run: yarn install
         
       - name: Build
-        run: npm run build
+        run: yarn build
 
       - name: Deploy to s3
         env:
@@ -36,7 +36,7 @@ jobs:
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
           VITE_SECRET_KEY: ${{ secrets.VITE_SECRET_KEY }}
         run: |
-          aws s3 sync \
+          aws s3 cp \
+          --recursive \
           --region ap-northeast-2 \
-          build s3://ybchar.dev \
-          --delete
+          build s3://ybchar.dev
