@@ -16,7 +16,7 @@ export default {
   methods: {
     openAboutMe() {
       window.open(
-        'https://ybchar.notion.site/Yunbeom-Cha-Backend-Developer-d81729a2f1be49b3bda27137726f23d9?pvs=4',
+        `https://ybchar.notion.site/Yunbeom-Cha-Backend-Developer-d81729a2f1be49b3bda27137726f23d9?pvs=4`,
         '_blank'
       );
     },
