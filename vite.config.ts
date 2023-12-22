@@ -20,7 +20,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: `https://ybchar.shop`,
+        target: `http://localhost:8000`,
         rewrite: path => path.replace(/^\/api/, ''),
         changeOrigin: true,
         secure: false,
